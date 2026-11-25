@@ -5,7 +5,8 @@
 | スキル | 何をするか |
 | --- | --- |
 | [ui-check](ui-check/SKILL.md) | 配色・表・一覧・画面の文言を変えたあと、「直しました」と返す前に 5 つの確認を通させる。実データを全件描いて測る、明暗と色を並べて見る、見ていないものも報告する、など |
-| [appstore-capture](appstore-capture/SKILL.md) | App Store 提出用のスクリーンショットを、iOS シミュレータから提出する寸法のまま撮る。見本のデータを入れ、透過を外し、どの枠に上げる画像かまで出す |
+| [appstore-capture](appstore-capture/SKILL.md) | App Store 提出用のスクリーンショットを、iOS シミュレータから提出する寸法のまま撮る。見本のデータを入れ、ステータスバーを固定し、透過を外し、どの枠に上げる画像かまで出す |
+| [appstore-screenshots](appstore-screenshots/SKILL.md) | 撮り直せない手元のスクリーンショットを、App Store の各枠の寸法へ変換する。縦横の比が違う枠へは引き伸ばさず、余白を足して収める |
 
 ## 入れ方
 
@@ -15,6 +16,7 @@
 git clone https://github.com/nzw/claude-code-skills.git
 cp -R claude-code-skills/ui-check ~/.claude/skills/
 cp -R claude-code-skills/appstore-capture ~/.claude/skills/
+cp -R claude-code-skills/appstore-screenshots ~/.claude/skills/
 ```
 
 Claude Code で、たとえば `/ui-check 2 列の表の幅` のように、内容を添えて呼びます。
@@ -23,6 +25,7 @@ Claude Code で、たとえば `/ui-check 2 列の表の幅` のように、内�
 
 - **ui-check** は、Flutter のアプリで使っていたものから、そのアプリだけのパスを外した版です。「実データを全件描く」テストと撮り方の手順は、使うプロジェクトのものに書き換えてください
 - **appstore-capture** は macOS・Xcode（iOS シミュレータ）・Flutter・Python の [Pillow](https://pillow.readthedocs.io/en/stable/) が要ります。`capture.sh` はシェルスクリプトで、あなたの権限で動きます。入れる前に中を読んでください
+- **appstore-screenshots** は macOS と Python の Pillow が要ります。撮り直せるなら、変換するより appstore-capture で撮り直すほうが、文字がにじまずに済みます
 - App Store が受け付ける寸法は変わります。スキルの表は 2026-10-14 に App Store Connect の画面で、2026-11-25 に Apple の [Screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications) で確かめた値です。上げる前に、枠に書かれた対応サイズと突き合わせてください
 
 ## ライセンス
